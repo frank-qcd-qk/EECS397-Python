@@ -1,8 +1,12 @@
+"""
+Author: "Frank" Chude Qian 
+Email: CXQ41@case.edu
+Example usage: "python .\assignment2.py .\example-002\schema.txt .\example-002\data.txt"
+"""
 import sys
-
+#! Global Variables
 SCHEMA_FILE_NAME = "schema_file.txt"
 DATA_FILE_NAME = "data_file.txt"
-
 LINE_WIDTH = 0
 WIDTH_INTEGER = 0
 VALID_LINE = 0
@@ -35,7 +39,7 @@ def customPrint(input_str, level=0):
     ----------
     input_str : str
         The text string you want to print it out. It must be a string.
-        
+
     level : int
         The information level of the string.
     """
