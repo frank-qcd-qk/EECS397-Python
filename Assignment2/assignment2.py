@@ -30,6 +30,15 @@ MINIMAL = True
 
 
 def customPrint(input_str, level=0):
+    """
+    Parameters
+    ----------
+    input_str : str
+        The text string you want to print it out. It must be a string.
+        
+    level : int
+        The information level of the string.
+    """
     message = str(input_str)
     if level == 0:
         if DEBUG:
