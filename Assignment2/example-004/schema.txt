@@ -1,0 +1,3 @@
+header birthdate width 10
+header has_computer width 1
+header languages width 25

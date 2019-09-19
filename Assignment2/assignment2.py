@@ -5,15 +5,18 @@ DATA_FILE_NAME = "data_file.txt"
 
 LINE_WIDTH = 0
 WIDTH_INTEGER = 0
-
 VALID_LINE = 0
 INVALID_LINE = 0
 
 line_count = 0
 
+#! Terminal Control tag
 DEBUG = False
+MINIMAL = True
+
 
 """
+-----Requirenment-----Requirenment
 1. Read in a schema file line by line.
     a. Discard commented lines (lines starting with the ‘#’ character).
     b. Parse all other lines to identify the WIDTH_INTEGER (see format rules below).
@@ -31,7 +34,8 @@ def customPrint(input_str,level=0):
         if DEBUG:
             print("[DEBUG]"+message)
     elif level == 1:
-        print("[INFO]"+message)
+        if not MINIMAL:
+            print("[INFO]"+message)
     elif level == 2:
         print("[WARNING]"+message)
     elif level == 3:
@@ -112,4 +116,3 @@ else:
     sys.stdout.write(""+str(VALID_LINE)+" "+str(INVALID_LINE))
 finally:
     customPrint("Program Complete",1)
-

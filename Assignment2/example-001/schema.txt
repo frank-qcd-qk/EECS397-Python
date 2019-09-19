@@ -1,0 +1,2 @@
+# comment, ignore this
+color red width 1
