@@ -126,8 +126,13 @@ try:
                 VALID_LINE = VALID_LINE+1
             else:
                 INVALID_LINE = INVALID_LINE+1
+
+#! File not found protection
 except FileNotFoundError:
-    customPrint("ERROR! File is not found!", 5)
+    customPrint("File is not found!", 5)
+except:
+    customPrint("Other issue causing file open failed.", 5)
+    sys.exit(99)
 else:
     sys.stdout.write(""+str(VALID_LINE)+" "+str(INVALID_LINE))
 finally:
