@@ -31,7 +31,8 @@ def customPrint(input_str,level=0):
         if DEBUG:
             print("[DEBUG]"+message)
     elif level == 1:
-        print("[INFO]"+message)
+        if DEBUG:
+            print("[INFO]"+message)
     elif level == 2:
         print("[WARNING]"+message)
     elif level == 3:
