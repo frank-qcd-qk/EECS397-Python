@@ -142,5 +142,5 @@ def minimaltest():
 
 
 #minimaltest()
-lagtest()
+#frequencyTestlagtest()
 #frequencyTest()
