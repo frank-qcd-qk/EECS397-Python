@@ -137,7 +137,7 @@ def frequencyTest():
 def minimaltest():
     returnval = store_checkout([("A", 5, "shiny new A"), ("B", 10, "big heavy B")],["A", "A", "B", "C"])
     customPrint("store_checkout function: val: "+str(returnval))
-    returnval = highest_frequency_count(["B","A", "A", "B", "B", "C", "A", "B", "B"])
+    returnval = highest_frequency_count(["B","B","B","B","A","A","A","A","A","A","A","A","A", "A", "B", "B", "C", "A", "B", "B"])
     customPrint("highest_frequency_count function: val: "+str(returnval),1)
 
 
