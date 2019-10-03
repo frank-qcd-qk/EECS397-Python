@@ -77,7 +77,6 @@ def store_checkout(inventory_tuple_list, item_purchase_list):
     sumVal = 0
     for item in item_purchase_list:
         sumVal+=inventoryDict.get(item,0)
-
     return sumVal
 
 #! Implmentation of my counter class, wth!
