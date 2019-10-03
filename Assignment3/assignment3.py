@@ -8,7 +8,7 @@ import string #! Not used for active writing code, but just for evaluation
 
 
 #! Control Tag for debug and testing
-DEBUG = True
+DEBUG = False
 MINIMAL = False
 
 def customPrint(input_str, level=0):
@@ -74,10 +74,11 @@ def store_checkout(inventory_tuple_list, item_purchase_list):
     inventoryDict = {a:b for a,b,c in inventory_tuple_list}
     customPrint("Inventory List: ")
     customPrint(str(inventoryDict))
-    
+    sumVal = 0
+    for item in item_purchase_list:
+        sumVal+=inventoryDict.get(item,0)
 
-
-    return 0
+    return sumVal
 
 #! Implmentation of my counter class, wth!
 
@@ -111,36 +112,36 @@ def highest_frequency_count(item_list):
     return next(iter(newdick.values()))
 
 def lagtest():
-    start = time.time()
+    start = time.perf_counter_ns()
     returnval = store_checkout([(str(i), i, str(i)) for i in range(100_000)], [str(i) for i in range(100_000)])
-    end = time.time()
-    customPrint("store_checkout function: time: "+str(end-start)+" val: "+str(returnval),1)
-    start = time.time()
+    end = time.perf_counter_ns()
+    customPrint("store_checkout function: time in ms: "+str((end-start)/1000000)+" val: "+str(returnval),1)
+    start = time.perf_counter_ns()
     returnval = highest_frequency_count([str(i) for i in range(1_000_000)])
-    end = time.time()
-    customPrint("highest_frequency_count function: time: "+str(end-start)+" val: "+str(returnval),1)
+    end = time.perf_counter_ns()
+    customPrint("highest_frequency_count function: time in ms: "+str((end-start)/1000000)+" val: "+str(returnval),1)
     return
 
 #! Ahhhh I am bored....
 def frequencyTest():
     inputList = []
-    start = time.time()
+    start = time.perf_counter_ns()
     for i in range(1_000_000):
         inputList.append(str(random.choice(string.ascii_letters)))
-    end = time.time()
-    customPrint("Generation Done: time: "+str(end-start))
-    start = time.time()
+    end = time.perf_counter_ns()
+    customPrint("Generation Done: time in ms: "+str((end-start)/1000000))
+    start = time.perf_counter_ns()
     returnval = highest_frequency_count(inputList)
-    end = time.time()
-    customPrint("highest_frequency_count function: time: "+str(end-start)+" val: "+str(returnval),1)
+    end = time.perf_counter_ns()
+    customPrint("highest_frequency_count function: time in ms: "+str((end-start)/1000000)+" val: "+str(returnval),1)
 
 def minimaltest():
-    #returnval = store_checkout([("A", 5, "shiny new A"), ("B", 10, "big heavy B")],["A", "A", "B", "C"])
-    #customPrint("store_checkout function: val: "+str(returnval))
+    returnval = store_checkout([("A", 5, "shiny new A"), ("B", 10, "big heavy B")],["A", "A", "B", "C"])
+    customPrint("store_checkout function: val: "+str(returnval))
     returnval = highest_frequency_count(["B","A", "A", "B", "B", "C", "A", "B", "B"])
     customPrint("highest_frequency_count function: val: "+str(returnval),1)
 
 
 #minimaltest()
-#lagtest()
-frequencyTest()
+lagtest()
+#frequencyTest()
