@@ -70,6 +70,19 @@ def store_checkout(inventory_tuple_list, item_purchase_list):
     Design: Inventory tuple list should be interpreted as dictionary
     Use lookup for each in iten purchase list.
     """
+    if (item_purchase_list is None):
+        customPrint("Fatal Error, itemlist null!",5)
+        return 0 
+    if (len(item_purchase_list) == 0):
+        customPrint("Fatal Error, empty list!",5)
+        return 0
+    if (inventory_tuple_list is None):
+        customPrint("Fatal Error, price list null!",5)
+        return 0 
+    if (len(inventory_tuple_list) == 0):
+        customPrint("Fatal Error, empty price list list!",5)
+        return 0
+
     #! Create an inventory dictionary
     inventoryDict = {a:b for a,b,c in inventory_tuple_list}
     customPrint("Inventory List: ")
@@ -79,7 +92,6 @@ def store_checkout(inventory_tuple_list, item_purchase_list):
         sumVal+=inventoryDict.get(item,0)
     return sumVal
 
-#! Implmentation of my counter class, wth!
 
 # Implement this function:
 def highest_frequency_count(item_list):
@@ -96,15 +108,23 @@ def highest_frequency_count(item_list):
         In the example, "A" and "B" each appear 3 times, while "C" appears 
         only 1 time. Therefore, expected return value would be 3.
     """
-    counting_dick = {}
+    if (item_list is None):
+        customPrint("Fatal Error, itemlist null!",5)
+        return 0 
+
+    if (len(item_list) == 0):
+        customPrint("Fatal Error, empty list!",5)
+        return 0
+
+    counting_dict = {}
     #?: Using dictionary.get function: if exist, return value, otherwise, return 0 which in either way we are going to iterate and udpate it in the dictionary.
     # refer python collection class, counter class
     for item in item_list:
-        counting_dick[item]=counting_dick.get(item,0)+1
-    customPrint("Current Listing Dictionary: "+str(counting_dick))
+        counting_dict[item]=counting_dict.get(item,0)+1
+    customPrint("Current Listing Dictionary: "+str(counting_dict))
     #?: Utilizes python 3.7 feature of sort dictionary 
     # refer: https://thispointer.com/python-how-to-sort-a-dictionary-by-key-or-value/
-    newdick = dict(sorted(counting_dick.items(),key=lambda x: x[1],reverse=True))
+    newdick = dict(sorted(counting_dict.items(),key=lambda x: x[1],reverse=True))
     customPrint("Sorted Dictionary: "+str(newdick))
     #? How to safely output a value?
     # refer https://stackoverflow.com/questions/3097866/access-an-arbitrary-element-in-a-dictionary-in-python
@@ -136,11 +156,11 @@ def frequencyTest():
 
 def minimaltest():
     returnval = store_checkout([("A", 5, "shiny new A"), ("B", 10, "big heavy B")],["A", "A", "B", "C"])
-    customPrint("store_checkout function: val: "+str(returnval))
+    customPrint("store_checkout function: val: "+str(returnval),1)
     returnval = highest_frequency_count(["B","B","B","B","A","A","A","A","A","A","A","A","A", "A", "B", "B", "C", "A", "B", "B"])
     customPrint("highest_frequency_count function: val: "+str(returnval),1)
 
 
 #minimaltest()
-#frequencyTestlagtest()
+#lagtest()
 #frequencyTest()

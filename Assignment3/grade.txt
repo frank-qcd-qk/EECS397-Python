@@ -1,0 +1,37 @@
+Functionality: 90/90
+Style: 7/10
+
+Total: 97/100
+
+Style comments:
+Try to be mindful of whitespace on a particular line:
+
+    inventoryDict = {a:b for a,b,c in inventory_tuple_list}
+    vs.
+    inventoryDict = {a: b for a, b, c in inventory_tuple_list}
+
+    sumVal+=inventoryDict.get(item,0)
+    vs.
+    sumVal += inventoryDict.get(item, 0)
+
+    counting_dict[item]=counting_dict.get(item,0)+1
+    vs.
+    counting_dict[item] = counting_dict.get(item, 0) + 1
+
+Try to maintain one style for variable names. https://www.python.org/dev/peps/pep-0008/#function-and-variable-names
+Functions and variable names should be lowercase and separated by underscores.
+
+There are many mixed examples of variable/function names:
+customPrint - camel case
+newdick - lower, no underscores
+counting_dict - lower, with underscore
+
+highest_frequency_count could benefit from whitespace between comments and code.
+Individual lines could also use whitespace to improve readability.
+
+You can just get the values off of the counting_dict by calling
+counting_dict.values(). No need for a lambda.
+
+    dict(sorted(counting_dict.items(),key=lambda x: x[1],reverse=True))
+    vs.
+    sorted(counting_dict.values(), reverse=True)

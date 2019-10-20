@@ -48,7 +48,7 @@ def customPrint(input_str, level=0):
         if DEBUG:
             print("[DEBUG]"+message)
     elif level == 1:
-        if not MINIMAL: ## Resolve Conflict
+        if not MINIMAL:
             print("[INFO]"+message)
     elif level == 2:
         print("[WARNING]"+message)
