@@ -1,5 +1,6 @@
 from stack import Stack
 
+
 class UniqueStack(Stack):
     """
     UniqueStack has the same methods and functionality as Stack, but will only store one
@@ -79,8 +80,18 @@ class LimitedStack(Stack):
     Define and implement the relevant methods from the base Stack class to enable the behavior
     described above. New versions of __init__() and push() should be sufficient.
     """
+    class LimitedStackOverflowError(Exception):
+        pass
 
-    def __init__(self):
+    def __init__(self, length):
+        if type(length) is not int:
+            raise TypeError("Stack length must be an integer")
+
+        self._length_cap = length
+
+        if self._length_cap <= 0:
+            raise ValueError("Stack length cannot be 0 or smaller than 0!")
+
         self._stack_items = []
 
     def push(self, item):
@@ -89,6 +100,9 @@ class LimitedStack(Stack):
 
         Raises a TypeError if item equals None.
         """
+        if (self._length_cap.length >= self._length_cap):
+            raise LimitedStackOverflowError("Stack overflow!")
+
         if item == None:
             raise TypeError("Stack will not store an object of NoneType.")
         self._stack_items.append(item)
@@ -120,13 +134,6 @@ class LimitedStack(Stack):
         """
         return len(self._stack_items)
 
-    class LimitedStackOverflowError(Exception):
-        pass
-
-    # Add mehods here. Remove this comment and the next line before doing so.
-    pass
-
-
 class RotatingStack(LimitedStack):
     """
     A RotatingStack has the same methods and functionality as LimitedStack, but will not raise an
@@ -148,7 +155,15 @@ class RotatingStack(LimitedStack):
     only a new version of push() should be needed.
     """
 
-    def __init__(self):
+    def __init__(self, length):
+        if type(length) is not int:
+            raise TypeError("Stack length must be an integer")
+
+        self._length_cap = length
+
+        if self._length_cap <= 0:
+            raise ValueError("Stack length cannot be 0 or smaller than 0!")
+
         self._stack_items = []
 
     def push(self, item):
@@ -157,6 +172,9 @@ class RotatingStack(LimitedStack):
 
         Raises a TypeError if item equals None.
         """
+        if (len(self._length_cap) >= self._length_cap):
+            self._stack_items.pop()
+
         if item == None:
             raise TypeError("Stack will not store an object of NoneType.")
         self._stack_items.append(item)
@@ -168,7 +186,7 @@ class RotatingStack(LimitedStack):
         Otherwise, return None.
         """
         if self._stack_items:
-            return self._stack_items.pop()
+            return self._stack_items.pop(0)
         else:
             return None
 
