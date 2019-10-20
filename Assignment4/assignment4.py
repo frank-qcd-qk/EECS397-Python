@@ -100,7 +100,7 @@ class LimitedStack(Stack):
 
         Raises a TypeError if item equals None.
         """
-        if (self._length_cap.length >= self._length_cap):
+        if (len(self._stack_items) >= self._length_cap):
             raise LimitedStackOverflowError("Stack overflow!")
 
         if item == None:
@@ -172,8 +172,8 @@ class RotatingStack(LimitedStack):
 
         Raises a TypeError if item equals None.
         """
-        if (len(self._length_cap) >= self._length_cap):
-            self._stack_items.pop()
+        if (len(self._stack_items) >= self._length_cap):
+            self._stack_items.pop(0)
 
         if item == None:
             raise TypeError("Stack will not store an object of NoneType.")
@@ -186,7 +186,7 @@ class RotatingStack(LimitedStack):
         Otherwise, return None.
         """
         if self._stack_items:
-            return self._stack_items.pop(0)
+            return self._stack_items.pop()
         else:
             return None
 
